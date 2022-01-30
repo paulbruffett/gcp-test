@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=2.64.0"
+    google = {
+      source = "hashicorp/google"
+      version = "3.5.0"
     }
   }
   backend "remote" {
@@ -18,15 +18,6 @@ terraform {
 
 variable "GOOGLE_CREDENTIALS" {
   type = string
-}
-
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-      version = "3.5.0"
-    }
-  }
 }
 
 provider "google" {
