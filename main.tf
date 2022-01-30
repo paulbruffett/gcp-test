@@ -11,7 +11,7 @@ terraform {
 
     # The name of the Terraform Cloud workspace to store Terraform state files in.
     workspaces {
-      name = "data"
+      name = "gcp-test"
     }
   }
 }
@@ -23,7 +23,7 @@ variable "GOOGLE_CREDENTIALS" {
 provider "google" {
   credentials = var.GOOGLE_CREDENTIALS
 
-  project = "21621368828"
+  project = "9589616824"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
