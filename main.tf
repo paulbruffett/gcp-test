@@ -28,6 +28,16 @@ provider "google" {
   zone    = "us-central1-c"
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
+resource "google_pubsub_topic" "arduino-telemetry" {
+  name = "arduino-telemetry"
+}
+
+resource "google_cloudiot_registry" "arduino-registry" {
+  name     = "arduino-registry"
+
+  event_notification_configs {
+    pubsub_topic_name = google_pubsub_topic.arduino-telemetry.id
+    subfolder_matches = ""
+  }
+
 }
