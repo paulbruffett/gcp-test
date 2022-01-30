@@ -1,0 +1,42 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.64.0"
+    }
+  }
+  backend "remote" {
+    # The name of your Terraform Cloud organization.
+    organization = "pbazure"
+
+    # The name of the Terraform Cloud workspace to store Terraform state files in.
+    workspaces {
+      name = "gcp-test"
+    }
+  }
+}
+
+variable "GOOGLE_CREDENTIALS" {
+  type = string
+}
+
+terraform {
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = "3.5.0"
+    }
+  }
+}
+
+provider "google" {
+  credentials = var.GOOGLE_CREDENTIALS
+
+  project = "21621368828"
+  region  = "us-central1"
+  zone    = "us-central1-c"
+}
+
+resource "google_compute_network" "vpc_network" {
+  name = "terraform-network"
+}
