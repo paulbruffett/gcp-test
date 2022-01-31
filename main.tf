@@ -48,6 +48,7 @@ resource "google_bigquery_dataset" "arduino-data" {
   location                    = "us-east1"
 
   access {
+    role = "READER"
     special_group = "allAuthenticatedUsers"
   }
 }
