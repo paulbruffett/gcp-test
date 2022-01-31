@@ -51,6 +51,12 @@ resource "google_bigquery_dataset" "arduino-data" {
     role = "READER"
     special_group = "allAuthenticatedUsers"
   }
+
+    access {
+    role = "OWNER"
+    special_group = "terraform@data-339805.iam.gserviceaccount.com"
+  }
+
 }
 
 resource "google_bigquery_table" "readings" {
