@@ -41,3 +41,12 @@ resource "google_cloudiot_registry" "arduino-registry" {
   }
 
 }
+
+resource "google_bigquery_dataset" "arduino-data" {
+  dataset_id                  = "arduino-dataset"
+  friendly_name               = "arduino"
+  location                    = "us-east1"
+
+  access {
+    special_group = "allAuthenticatedUsers"
+  }
