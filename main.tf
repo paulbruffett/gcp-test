@@ -56,12 +56,6 @@ resource "google_bigquery_dataset" "sensor-data" {
     role = "OWNER"
     user_by_email = "paulbruffett@gmail.com"
   }
-
-  access {
-    role = "EDITOR"
-    user_by_email = "dataflow@data-339805.iam.gserviceaccount.com"
-  }
-
 }
 
 resource "google_bigquery_table" "arduino_readings" {
