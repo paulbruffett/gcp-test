@@ -54,7 +54,7 @@ resource "google_bigquery_dataset" "arduino-data" {
 
     access {
     role = "OWNER"
-    special_group = "terraform@data-339805.iam.gserviceaccount.com"
+    user_by_email = "terraform@data-339805.iam.gserviceaccount.com"
   }
 
 }
