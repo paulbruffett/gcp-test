@@ -43,7 +43,7 @@ resource "google_cloudiot_registry" "arduino-registry" {
 }
 
 resource "google_bigquery_dataset" "arduino-data" {
-  dataset_id                  = "arduino-dataset"
+  dataset_id                  = "arduino_dataset"
   friendly_name               = "arduino"
   location                    = "us-east1"
 
