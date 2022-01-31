@@ -57,6 +57,11 @@ resource "google_bigquery_dataset" "arduino-data" {
     user_by_email = "terraform@data-339805.iam.gserviceaccount.com"
   }
 
+      access {
+    role = "EDITOR"
+    user_by_email = "dataflow@data-339805.iam.gserviceaccount.com"
+  }
+
 }
 
 resource "google_bigquery_table" "readings" {
