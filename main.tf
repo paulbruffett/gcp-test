@@ -54,10 +54,10 @@ resource "google_bigquery_dataset" "arduino-data" {
 
     access {
     role = "OWNER"
-    user_by_email = "terraform@data-339805.iam.gserviceaccount.com"
+    user_by_email = "paulbruffett@gmail.com"
   }
 
-      access {
+  access {
     role = "EDITOR"
     user_by_email = "dataflow@data-339805.iam.gserviceaccount.com"
   }
@@ -93,7 +93,7 @@ resource "google_bigquery_table" "readings" {
   },
     {
     "name": "illuminance",
-    "type": "INTEGER",
+    "type": "FLOAT",
     "mode": "NULLABLE"
   }
 ]
