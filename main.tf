@@ -52,3 +52,40 @@ resource "google_bigquery_dataset" "arduino-data" {
     special_group = "allAuthenticatedUsers"
   }
 }
+
+resource "google_bigquery_table" "readings" {
+  dataset_id = google_bigquery_dataset.arduino-data.dataset_id
+  table_id   = "readings"
+
+
+  schema = <<EOF
+[
+  {
+    "name": "timestamp",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "temp",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "humidity",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pressure",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+    {
+    "name": "illuminance",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  }
+]
+EOF
+
+}
