@@ -50,3 +50,4 @@ resource "google_bigquery_dataset" "arduino-data" {
   access {
     special_group = "allAuthenticatedUsers"
   }
+}
