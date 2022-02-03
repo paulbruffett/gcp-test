@@ -99,7 +99,7 @@ data "google_iam_policy" "admin" {
     role = "roles/bigquery.dataEditor"
 
     members = [
-      "serviceAccount:", google_service_account.sa.name,
+      "serviceAccount:", google_service_account.dataflow.name,
     ]
   }
 }
