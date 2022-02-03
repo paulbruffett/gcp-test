@@ -112,6 +112,5 @@ resource "google_dataflow_job" "arduino_dataflow" {
       inputTopic = google_pubsub_topic.arduino-telemetry.id
       outputTableSpec    = google_bigquery_table.arduino_readings.table_id
     }
-    enable_streaming_engine = true
     service_account_email = google_service_account.dataflow.name
 }
