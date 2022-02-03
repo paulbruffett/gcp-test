@@ -108,11 +108,10 @@ resource "google_dataflow_job" "arduino_dataflow" {
     name = "arduino-dataflow1"
     template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
     temp_gcs_location = "gs://pbgsb/files"
-    enable_streaming_engine = true
     parameters = {
       inputTopic = google_pubsub_topic.arduino-telemetry.id
       outputTableSpec    = google_bigquery_table.arduino_readings.table_id
     }
-    on_delete = "cancel"
+    enable_streaming_engine = true
     service_account_email = google_service_account.dataflow.name
 }
