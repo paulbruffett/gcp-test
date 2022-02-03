@@ -103,4 +103,16 @@ data "google_iam_policy" "editor" {
       "serviceAccount:", google_service_account.dataflow.name,
     ]
   }
+
+
+resource "google_dataflow_job" "arduinodataflow" {
+    name = "arduino-dataflow1"
+    template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
+    temp_gcs_location = "gs://pbgsb/files"
+    parameters = {
+      inputTopic = google_pubsub_topic.arduino-telemetry.id
+      outputTableSpec    = "data2-340001:sensor_data.arduino"
+    }
+    service_account_email = google_service_account.dataflow.email
+    enable_streaming_engine = true
 }
