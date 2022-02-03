@@ -103,6 +103,7 @@ data "google_iam_policy" "editor" {
       "serviceAccount:", google_service_account.dataflow.name,
     ]
   }
+}
 
 
 resource "google_dataflow_job" "arduinodataflow" {
