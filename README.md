@@ -1,6 +1,6 @@
 # gcp-test
 1. create workspace, API driven
-2. 
+2. create terraform IAM service account with Editor and BigQuery Data Editor
 
 ## Registering a new device
 

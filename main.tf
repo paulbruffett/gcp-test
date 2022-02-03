@@ -47,11 +47,6 @@ resource "google_bigquery_dataset" "sensor-data" {
   friendly_name               = "sensorreadings"
   location                    = "us-east1"
 
-  access {
-    role = "READER"
-    special_group = "allAuthenticatedUsers"
-  }
-
     access {
     role = "OWNER"
     user_by_email = "paulbruffett@gmail.com"
@@ -93,4 +88,18 @@ resource "google_bigquery_table" "arduino_readings" {
 ]
 EOF
 
+}
+
+resource "google_service_account" "dataflow" {
+  account_id   = "dataflow"
+}
+
+data "google_iam_policy" "admin" {
+  binding {
+    role = "roles/bigquery.dataEditor"
+
+    members = [
+      "serviceAccount:", google_service_account.sa.name,
+    ]
+  }
 }
