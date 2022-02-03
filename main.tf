@@ -113,10 +113,6 @@ resource "google_dataflow_job" "arduino_dataflow" {
       inputTopic = google_pubsub_topic.arduino-telemetry.id
       outputTableSpec    = google_bigquery_table.arduino_readings.table_id
     }
-    transform_name_mapping = {
-        name = "test_job"
-        env = "test"
-    }
     on_delete = "cancel"
     service_account_email = google_service_account.dataflow.name
 }
