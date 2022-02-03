@@ -90,17 +90,6 @@ EOF
 
 }
 
-resource "google_dataflow_job" "arduinodataflow" {
-    name = "arduino-dataflow1"
-    template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
-    temp_gcs_location = "gs://pbgsb/files"
-    parameters = {
-      inputTopic = google_pubsub_topic.arduino-telemetry.id
-      outputTableSpec    = google_bigquery_table.arduino_readings.table_id
-    }
-    service_account_email = google_service_account.dataflow.name
-    enable_streaming_engine = true
-}
 
 resource "google_service_account" "dataflow" {
   account_id   = "dataflow"
