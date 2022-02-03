@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "3.5.0"
+      version = "4.9.0"
     }
   }
   backend "remote" {
@@ -113,4 +113,5 @@ resource "google_dataflow_job" "arduino_dataflow" {
       outputTableSpec    = google_bigquery_table.arduino_readings.table_id
     }
     service_account_email = google_service_account.dataflow.name
+    enable_streaming_engine = true
 }
