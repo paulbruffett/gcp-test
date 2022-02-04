@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "4.8.0"
+      version = "4.9.0"
     }
   }
   backend "remote" {
@@ -114,6 +114,5 @@ resource "google_dataflow_job" "arduinodataflow" {
       inputTopic = google_pubsub_topic.arduino-telemetry.id
       outputTableSpec    = "data2-340001:sensor_data.arduino"
     }
-    service_account_email = google_service_account.dataflow.email
     enable_streaming_engine = true
 }
