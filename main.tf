@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "4.9.0"
+      version = "4.8.0"
     }
   }
   backend "remote" {
@@ -108,7 +108,7 @@ data "google_iam_policy" "editor" {
 
 resource "google_dataflow_job" "arduinodataflow" {
     name = "arduino-dataflow1"
-    template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
+    template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQueryx"
     temp_gcs_location = "gs://pbgsb/files"
     parameters = {
       inputTopic = google_pubsub_topic.arduino-telemetry.id
