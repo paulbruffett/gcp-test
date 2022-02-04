@@ -107,7 +107,7 @@ data "google_iam_policy" "editor" {
 
 
 resource "google_dataflow_job" "arduinodataflow" {
-    name = "arduino-dataflow1"
+    name = "readings to bq"
     template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQueryx"
     temp_gcs_location = "gs://pbgsb/files"
     parameters = {
