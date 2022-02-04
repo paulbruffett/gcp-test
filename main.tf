@@ -104,15 +104,3 @@ data "google_iam_policy" "editor" {
     ]
   }
 }
-
-
-resource "google_dataflow_job" "arduinodataflow" {
-    name = "readings to bq"
-    template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQueryx"
-    temp_gcs_location = "gs://pbgsb/files"
-    parameters = {
-      inputTopic = google_pubsub_topic.arduino-telemetry.id
-      outputTableSpec    = "data2-340001:sensor_data.arduino"
-    }
-    enable_streaming_engine = true
-}
