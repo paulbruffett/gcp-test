@@ -21,7 +21,7 @@ variable "GOOGLE_CREDENTIALS" {
 }
 
 variable "PROJECT_NUMBER" {
-  type = integer
+  type = number
 }
 
 provider "google" {
