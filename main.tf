@@ -23,7 +23,7 @@ variable "GOOGLE_CREDENTIALS" {
 provider "google" {
   credentials = var.GOOGLE_CREDENTIALS
 
-  project = "882038477912"
+  project = var.PROJECT_NUMBER
   region  = "us-central1"
   zone    = "us-central1-c"
 }
