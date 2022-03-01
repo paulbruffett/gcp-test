@@ -20,6 +20,10 @@ variable "GOOGLE_CREDENTIALS" {
   type = string
 }
 
+variable "PROJECT_NUMBER" {
+  type = integer
+}
+
 provider "google" {
   credentials = var.GOOGLE_CREDENTIALS
 
