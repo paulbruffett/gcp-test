@@ -104,14 +104,20 @@ resource "google_service_account" "dataflow" {
   account_id   = "dataflow"
 }
 
-resource "google_dataflow_job" "arduino-df" {
-  name              = "arduino-dataflow"
-  template_gcs_path = "gs://dataflow-templates-us-central1/latest/PubSub_to_BigQuery"
-  temp_gcs_location = "gs://pb-temp-gcs/"
-  parameters = {
-    output_table_spec = google_bigquery_table.arduinoreadings.table_id
-    input_topic = "projects/data4-342823/topics/arduino-telemetry"
-  }
+resource "google_dataflow_job" "pubsub_stream" {
+    name = "tf-test-dataflow-job1"
+    template_gcs_path = "gs://my-bucket/templates/template_file"
+    temp_gcs_location = "gs://my-bucket/tmp_dir"
+    enable_streaming_engine = true
+    parameters = {
+      inputFilePattern = "${google_storage_bucket.bucket1.url}/*.json"
+      outputTopic    = google_pubsub_topic.topic.id
+    }
+    transform_name_mapping = {
+        name = "test_job"
+        env = "test"
+    }
+    on_delete = "cancel"
 }
 
 data "google_iam_policy" "editor" {
