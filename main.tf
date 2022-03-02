@@ -11,7 +11,7 @@ terraform {
 
     # The name of the Terraform Cloud workspace to store Terraform state files in.
     workspaces {
-      name = "gcp-data4"
+      name = "gcp-iot"
     }
   }
 }
