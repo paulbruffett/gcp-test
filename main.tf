@@ -106,7 +106,7 @@ resource "google_service_account" "dataflow" {
 
 resource "google_dataflow_job" "arduino-df" {
   name              = "arduino-dataflow"
-  template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
+  template_gcs_path = "gs://dataflow-templates-us-central1/latest/PubSub_to_BigQuery"
   temp_gcs_location = "gs://pb-temp-gcs/"
   parameters = {
     output_table_spec = google_bigquery_table.arduinoreadings.table_id
