@@ -58,7 +58,7 @@ resource "google_bigquery_dataset" "sensordata" {
 }
 
 resource "google_bigquery_table" "arduinoreadings" {
-  dataset_id = google_bigquery_dataset.sensordata.id
+  dataset_id = google_bigquery_dataset.sensordata.dataset_id
   table_id   = "arduino"
 
 
