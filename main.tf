@@ -94,6 +94,23 @@ EOF
 
 }
 
+resource "google_dataflow_job" "big_data_job" {
+  name              = "arduino-dataflow"
+  template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
+  location = "us-central1"
+  temp_gcs_location = google_storage_bucket.gcs-temp.url
+  additionalExperiments = ["enable_prime"]
+  parameters = {
+    outputTableSpec = google_bigquery_table.arduinoreadings.table_id
+    inputTopic = google_pubsub_topic.arduino-telemetry.name
+  }
+}
+
+resource "google_storage_bucket" "gcs-temp" {
+    name          = "pb-temp-gcs"
+    location      = "US"
+    force_destroy = true
+}
 
 resource "google_service_account" "dataflow" {
   account_id   = "dataflow"
