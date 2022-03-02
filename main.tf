@@ -46,7 +46,7 @@ resource "google_cloudiot_registry" "arduino-registry" {
 
 }
 
-resource "google_bigquery_dataset" "sensor-data" {
+resource "google_bigquery_dataset" "sensordata" {
   dataset_id                  = "sensor_data2"
   friendly_name               = "sensorreadings"
   location                    = "us-east1"
@@ -58,7 +58,7 @@ resource "google_bigquery_dataset" "sensor-data" {
 }
 
 resource "google_bigquery_table" "arduino_readings" {
-  dataset_id = google_bigquery_dataset.sensor-data.dataset_id
+  dataset_id = google_bigquery_dataset.sensordata.dataset_id
   table_id   = "arduino"
 
 
