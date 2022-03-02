@@ -94,6 +94,43 @@ EOF
 
 }
 
+resource "google_bigquery_table" "arduinoreadings_timestamp" {
+  dataset_id = google_bigquery_dataset.sensordata.dataset_id
+  table_id   = "arduino_prepared"
+
+
+  schema = <<EOF
+[
+  {
+    "name": "timestamp",
+    "type": "DATETIME",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "temp",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "humidity",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pressure",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  },
+    {
+    "name": "illuminance",
+    "type": "FLOAT",
+    "mode": "NULLABLE"
+  }
+]
+EOF
+
+}
+
 resource "google_storage_bucket" "gcs-temp" {
     name          = "pb-temp-gcs"
     location      = "US"
