@@ -107,12 +107,10 @@ resource "google_service_account" "dataflow" {
 resource "google_dataflow_job" "arduino-df" {
   name              = "arduino-dataflow"
   template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
-  region = "us-central1"
-  temp_gcs_location = google_storage_bucket.gcs-temp.url
-  additional_experiments = ["enable_prime"]
+  temp_gcs_location = "gs://pb-temp-gcs/"
   parameters = {
     output_table_spec = google_bigquery_table.arduinoreadings.table_id
-    input_topic = google_pubsub_topic.arduino-telemetry.id
+    input_topic = "projects/data4-342823/topics/arduino-telemetry"
   }
 }
 
