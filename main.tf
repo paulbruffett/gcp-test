@@ -104,22 +104,6 @@ resource "google_service_account" "dataflow" {
   account_id   = "dataflow"
 }
 
-resource "google_dataflow_job" "pubsub_stream" {
-    name = "tf-test-dataflow-job1"
-    template_gcs_path = "gs://my-bucket/templates/template_file"
-    temp_gcs_location = "gs://my-bucket/tmp_dir"
-    enable_streaming_engine = true
-    parameters = {
-      inputFilePattern = "gs://pbbucket/*.json"
-      outputTopic    = "projects/data4-342823/topics/arduino-telemetry"
-    }
-    transform_name_mapping = {
-        name = "test_job"
-        env = "test"
-    }
-    on_delete = "cancel"
-}
-
 data "google_iam_policy" "editor" {
   binding {
     role = "roles/bigquery.dataEditor"
