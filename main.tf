@@ -97,7 +97,7 @@ EOF
 resource "google_dataflow_job" "big_data_job" {
   name              = "arduino-dataflow"
   template_gcs_path = "gs://dataflow-templates/latest/PubSub_to_BigQuery"
-  location = "us-central1"
+  region = "us-central1"
   temp_gcs_location = google_storage_bucket.gcs-temp.url
   additionalExperiments = ["enable_prime"]
   parameters = {
