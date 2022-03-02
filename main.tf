@@ -59,7 +59,7 @@ resource "google_bigquery_dataset" "sensordata" {
 
 resource "google_bigquery_table" "arduino_readings" {
   dataset_id = google_bigquery_dataset.sensordata.dataset_id
-  table_id   = "arduino"
+  table_id   = "arduinox"
 
 
   schema = <<EOF
