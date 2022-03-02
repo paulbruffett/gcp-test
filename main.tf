@@ -110,7 +110,7 @@ resource "google_dataflow_job" "pubsub_stream" {
     temp_gcs_location = "gs://my-bucket/tmp_dir"
     enable_streaming_engine = true
     parameters = {
-      inputFilePattern = "${google_storage_bucket.bucket1.url}/*.json"
+      inputFilePattern = "gs://pbbucket/*.json"
       outputTopic    = "projects/data4-342823/topics/arduino-telemetry"
     }
     transform_name_mapping = {
