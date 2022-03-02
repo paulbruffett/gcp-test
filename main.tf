@@ -112,7 +112,7 @@ resource "google_dataflow_job" "arduino-df" {
   additional_experiments = ["enable_prime"]
   parameters = {
     output_table_spec = google_bigquery_table.arduinoreadings.table_id
-    input_topic = google_pubsub_topic.arduino-telemetry.name
+    input_topic = google_pubsub_topic.arduino-telemetry.id
   }
 }
 
